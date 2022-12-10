@@ -79,6 +79,22 @@ class Television(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(110, 380, 131, 41))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(250, 380, 131, 41))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(110, 430, 131, 41))
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(250, 430, 131, 41))
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(220, 360, 51, 16))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
@@ -90,6 +106,10 @@ class Television(object):
         self.volumeUp.clicked.connect(self.volume_up)
         self.volumeDown.clicked.connect(self.volume_down)
         self.muteButton.clicked.connect(self.mute)
+        self.pushButton.clicked.connect(self.channel0)
+        self.pushButton_2.clicked.connect(self.channel1)
+        self.pushButton_3.clicked.connect(self.channel2)
+        self.pushButton_4.clicked.connect(self.channel3)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -103,6 +123,11 @@ class Television(object):
         self.channelDown.setText(_translate("MainWindow", "-"))
         self.channelLabel.setText(_translate("MainWindow", "Channel"))
         self.volumeCurrent.setText(_translate("MainWindow", "0"))
+        self.pushButton.setText(_translate("MainWindow", "1"))
+        self.pushButton_2.setText(_translate("MainWindow", "2"))
+        self.pushButton_3.setText(_translate("MainWindow", "3"))
+        self.pushButton_4.setText(_translate("MainWindow", "4"))
+        self.label.setText(_translate("MainWindow", "Channel"))
 
 
     def __init__(self):
@@ -136,6 +161,34 @@ class Television(object):
                 self.__muted = True
                 self.volumeBar.setProperty("value", 0)
                 self.volumeCurrent.setText(QtCore.QCoreApplication.translate("MainWindow", "Muted"))
+
+    def channel0(self):
+        if self.__status:
+            self.__channel = 0
+            self.show_channel0()
+        else:
+            pass
+
+    def channel1(self):
+        if self.__status:
+            self.__channel = 1
+            self.show_channel1()
+        else:
+            pass
+
+    def channel2(self):
+        if self.__status:
+            self.__channel = 2
+            self.show_channel2()
+        else:
+            pass
+
+    def channel3(self):
+        if self.__status:
+            self.__channel = 3
+            self.show_channel3()
+        else:
+            pass
 
     def channel_up(self):
         if self.__status:
